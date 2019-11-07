@@ -33,11 +33,11 @@ const CustomerDetailPage = () => {
 
   useEffect(() => {
     id && fetchCustomer(id);
-  }, [fetchCustomer, id]);
+	},[fetchCustomer,id]);
   return (
 		<>
-			{!id && <div>No Customer Info</div>}
-			{customer && 
+			{/* {!customer && <Toolbar>No Customer Info</Toolbar>} */}
+			{customer &&
 				<>
 					<Toolbar>
 						<CardHeader

@@ -24,8 +24,13 @@ const useFetchCustomer = id => {
         type: 'RECEIVE_CUSTOMER',
         item: json
       });
-    } catch (error) {
-      console.log(Object.keys(error), error.message);
+    } catch(error) {
+      dispatch({
+        type: 'RECEIVE_CUSTOMER',
+        item: {},
+        error: error.message
+      });
+      console.log(error.message);
     }
   }, [dispatch]);
   return fetchCustomer;

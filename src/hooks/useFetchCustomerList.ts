@@ -36,8 +36,13 @@ const useFetchCustomerList = () => {
         type: 'RECEIVE_CUSTOMER_LIST',
         items: json
       });
-    } catch (error) {
-      console.log(Object.keys(error), error.message);
+    } catch(error) {
+      dispatch({
+        type: 'RECEIVE_CUSTOMER_LIST',
+        items: [],
+        error: 'error.message'
+      });
+      console.log(error.message);
     }
   }, [dispatch]);
   return fetchCustomerList;

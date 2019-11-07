@@ -1,11 +1,13 @@
+import { Action, State } from './actions';
+
 import { combineReducers } from 'redux';
-import { State, Action } from './actions';
 
 const customers = (
   state: State = {
     isFetching: false,
     items: [],
-    currentItem: {}
+    currentItem: {},
+    error: null
   },
   action: Action
 ): State => {
@@ -13,22 +15,26 @@ const customers = (
     case 'REQUEST_CUSTOMER_LIST':
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
+        error: null,
       };
     case 'RECEIVE_CUSTOMER_LIST':
       return {
         ...state,
         isFetching: false,
-        items: action.items
+        items: action.items,
+        error: action.error
       };
     case 'REQUEST_CUSTOMER':
       return {
-        ...state
+        ...state,
+        error: null,
       };
     case 'RECEIVE_CUSTOMER':
       return {
 				...state,
-				currentItem: action.item
+        currentItem: action.item,
+        error: action.error
 			};
     default:
       return state;
