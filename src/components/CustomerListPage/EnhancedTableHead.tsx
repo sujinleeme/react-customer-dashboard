@@ -3,6 +3,7 @@ import * as React from 'react';
 import { TableCell, TableHead, TableRow, TableSortLabel } from '@material-ui/core';
 
 import CheckBoxDropDownMenu from './CheckBoxDropDownMenu';
+import { makeStyles } from '@material-ui/core/styles';
 
 const EnhancedTableHead = (props) => {
 	const { classes,order,orderBy,numSelected,rowCount,onRequestSort,onRequestSelectOption,headCells,options } = props;
@@ -16,15 +17,15 @@ const EnhancedTableHead = (props) => {
 				{headCells.map(headCell => 
 					<TableCell
 						key={`${headCell.id}-headcell`}
-						align="center"
-						padding={headCell.disablePadding ? 'none' : 'default'}
+						align='center'
+						padding='none'
 						sortDirection={orderBy === headCell.id ? order : false}>
 						<TableSortLabel
 							active={orderBy === headCell.id}
 							direction={order}
 							onClick={createSortHandler(headCell.id)}>
-							{headCell.label}
-							{orderBy === headCell.id ? 
+							<span className={classes.tableHeader}>{headCell.label}</span>
+							{orderBy === headCell.id ?
 								<span className={classes.visuallyHidden}>
 									{order === 'desc' ? 'sorted descending' : 'sorted ascending'}
 								</span>

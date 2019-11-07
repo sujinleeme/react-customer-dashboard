@@ -3,15 +3,12 @@ import '../styles/normalize.css';
 
 import * as React from 'react';
 
-import { Link, MemoryRouter, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import { useCallback, useEffect } from 'react';
-
 import CustomerListPage from './CustomerListPage';
-import {
-	Grid
-} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
+import { BrowserRouter as Router } from 'react-router-dom';
 import { State } from '../store/actions';
 import { createBrowserHistory } from "history";
+import { useEffect } from 'react';
 import useFetchCustomerList from '../hooks/useFetchCustomerList';
 import { useSelector } from 'react-redux';
 
@@ -28,11 +25,11 @@ const App: React.FC = () => {
 	return (
     <Router history={history}>
 			<Grid container>
-				<Grid item xs={false} md={1} />
-				<Grid item xs={12} md={10}>
+				<Grid item xs={0} sm={1} />
+				<Grid item xs={12} sm={10}>
 					<CustomerListPage />
 				</Grid>
-				<Grid item xs={false} md={1} />
+				<Grid item xs={0} sm={1} />
 			</Grid>
 		</Router>
 	);

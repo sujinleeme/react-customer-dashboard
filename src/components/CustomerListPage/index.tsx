@@ -31,12 +31,6 @@ const CustomerListPage: React.FC = () => {
       label: 'Phone',
     },
     {
-      id: 'createdAt',
-      numeric: false,
-      disablePadding: false,
-      label: 'Resgistration Date'
-    },
-    {
       id: 'status',
       numeric: false,
       disablePadding: false,
@@ -61,7 +55,7 @@ const CustomerListPage: React.FC = () => {
           createdAt,
           name: personalDetails ? personalDetails.legalName : '',
           email: email || '',
-          phone: phoneDetails ? phoneDetails.number : '',
+          phone: phoneDetails ? `+${phoneDetails.countryCode} ${phoneDetails.number}` : '',
         };
         acc.push(newData);
         return acc;

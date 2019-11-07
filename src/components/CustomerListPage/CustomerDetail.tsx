@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Avatar, CardHeader, Table, TableBody, TableCell, TableHead, TableRow, Toolbar, Typography } from '@material-ui/core';
+import { Avatar, Breadcrumbs, CardHeader, Table, TableBody, TableCell, TableHead, TableRow, Toolbar, Typography } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
@@ -9,75 +9,61 @@ import useFetchCustomer from '../../hooks/useFetchCustomer';
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
 
-const useStyles = makeStyles(theme => ({
-  card: {
-    maxWidth: 345
-  },
-  content: {
-    display: 'cente'
-  },
-  avatar: {
-    backgroundColor: red[500]
-  },
-  toolbar: {
-    margin: 0
-  }
-}));
+const headCells = ['No.', 'Portfolio Name',' Currency', 'recurring Investment Schedule', 'Initial Investment Amount']
 
 const CustomerDetailPage = () => {
   const fetchCustomer = useFetchCustomer();
   const classes = useStyles();
   const customers = useSelector((state: State) => state.customers);
-  const customer = customers.currentItem;
+	const { currentItem,error } = customers
   const { id } = useParams();
 
   useEffect(() => {
     id && fetchCustomer(id);
-	},[fetchCustomer,id]);
+	}, [fetchCustomer,id]);
+
   return (
 		<>
-			{/* {!customer && <Toolbar>No Customer Info</Toolbar>} */}
-			{customer &&
+			{error &&
+				<Toolbar>
+					<Typography>No customer's detail info. :(</Typography>
+				</Toolbar>}
+			{currentItem &&
 				<>
 					<Toolbar>
 						<CardHeader
 							className={classes.toolbar}
 							avatar={
 								<Avatar aria-label="recipe" className={classes.avatar}>
-									R
+									{currentItem['name'].charAt(0)}
 								</Avatar>
 							}
-							title={customer.name}
-							subheader={customer.customerId}
+						title={currentItem.name}
+						subheader={`ID: ${currentItem.customerId}`}
 							/>
-					</Toolbar>
-					<Toolbar>
-						<Typography variant="body1">
-							Target Stock Ratio: {customer.targetStockRatio}
+				</Toolbar>
+				<Toolbar className={classes.planTitleBar}>
+					<Typography variant="subtitle1">Plans</Typography>
+					<Breadcrumbs>
+						<Typography variant="body2">
+							Target Stock Ratio: {currentItem.targetStockRatio}
 						</Typography>
-						<Typography variant="body1">
-							Target Stock Ratio: {customer.status}
+						<Typography variant="body2">
+							Target Stock Ratio: {currentItem.status}
 						</Typography>
-						<Typography variant="subtitle1">Plans</Typography>
-					</Toolbar>
+					</Breadcrumbs>
+				</Toolbar>
 					<Table>
-						<TableHead>
-							<TableRow>
-								<TableCell align="center" />
-								<TableCell align="center">Portfolio Name</TableCell>
-								<TableCell align="center">Currency</TableCell>
-								<TableCell align="center">
-									Recurring Investment Schedule
-								</TableCell>
-								<TableCell align="center">Initial Investment Amount</TableCell>
-								<TableCell>Create </TableCell>
-							</TableRow>
+					<TableHead >
+						<TableRow >
+							{headCells.map((cell,i) => <TableCell align="center" key={`${cell}-${i}-0`} className={classes.tableHead}>{cell}</TableCell>)}
+						</TableRow>
 						</TableHead>
 						<TableBody>
-							{customer.plans &&
-								customer.plans.map((row, i) => 
+						{currentItem.plans &&
+							currentItem.plans.map((row, i) => 
 									<TableRow key={`${row.goalId}-${i}`}>
-										<TableCell component="th" scope="row">
+										<TableCell align="center">
 											{i+1}
 										</TableCell>
 										<TableCell align="center">
@@ -96,7 +82,6 @@ const CustomerDetailPage = () => {
 										<TableCell align="right">
 											{row.initialInvestmentAmount}
 										</TableCell>
-										<TableCell align="right">{row.createdAt}</TableCell>
 									</TableRow>
 								)}
 						</TableBody>
@@ -106,5 +91,27 @@ const CustomerDetailPage = () => {
 		</>
 	);
 };
+
+const useStyles = makeStyles(theme => ({
+	card: {
+		maxWidth: 345
+	},
+	content: {
+		display: 'center'
+	},
+	avatar: {
+		backgroundColor: red[500]
+	},
+	toolbar: {
+		margin: 0
+	},
+	planTitleBar: {
+		justifyContent: 'space-between',
+		borderBottom: '1px solid rgba(224, 224, 224, 1)'
+	},
+	tableHead: {
+		fontWeight: "bolder"
+	}
+}));
 
 export default CustomerDetailPage;

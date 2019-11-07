@@ -25,8 +25,6 @@ const EnhancedTable = ({ headCells, options, bodyCells, isLoading }) => {
     return acc;
   },{}))
 
-  // const { 'ACTIVE', 'REGISTERING' } = statusOptions;
-
   const handleRequestSort = (event, property) => {
     const isDesc = orderBy === property && order === 'desc';
     setOrder(isDesc ? 'asc' : 'desc');
@@ -81,11 +79,7 @@ const EnhancedTable = ({ headCells, options, bodyCells, isLoading }) => {
       if(searchTerm.length > 0) {
         setRows(filteredBySearchTerm(rows));
       }
-          
-      // else {
-      //   setRows(filteredBySearchTerm(rows));
-      // }
-
+      
       // filter the customer list if email or name matches in search input.  
       if(!statusOptions['ACTIVE'] && !statusOptions['REGISTERING']) {
         setRows([])
@@ -137,19 +131,16 @@ const EnhancedTable = ({ headCells, options, bodyCells, isLoading }) => {
                         return (
                           <TableRow
                             hover
+                            style={{ "cursor": "pointer" }}
                             onClick={event => handleClick(event, row.id)}
                             key={`${row.id}-row`} >
                             <TableCell
-                              component="th"
-                              id={labelId}
                               scope="row"
-                              padding="none"
                               align="center" >
                               {row.name}
                             </TableCell>
                             <TableCell align="center">{row.email}</TableCell>
                             <TableCell align="center">{row.phone}</TableCell>
-                            <TableCell align="center">{row.createdAt}</TableCell>
                             <TableCell align="center">{row.status}</TableCell>
                           </TableRow>
                         );
@@ -195,6 +186,9 @@ const useStyles = makeStyles(theme => ({
   },
   tableWrapper: {
     overflowX: 'auto'
+  },
+  tableHeader: {
+    fontWeight: "bold"
   },
   visuallyHidden: {
     border: 0,
