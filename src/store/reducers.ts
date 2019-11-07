@@ -6,7 +6,7 @@ const customers = (
   state: State = {
     isFetching: false,
     items: [],
-    currentItem: {},
+    currentItem: null,
     error: null
   },
   action: Action
@@ -18,24 +18,38 @@ const customers = (
         isFetching: true,
         error: null,
       };
+    case 'REQUEST_CUSTOMER_LIST_ERROR':
+      return {
+        ...state,
+        isFetching: false,
+        items: [],
+        error: action.error
+      };
     case 'RECEIVE_CUSTOMER_LIST':
       return {
         ...state,
         isFetching: false,
         items: action.items,
-        error: action.error
       };
     case 'REQUEST_CUSTOMER':
       return {
         ...state,
+        isFetching: true,
         error: null,
+      };
+    case 'REQUEST_CUSTOMER_ERROR':
+      return {
+        ...state,
+        isFetching: false,
+        currentItem: null,
+        error: action.error
       };
     case 'RECEIVE_CUSTOMER':
       return {
-				...state,
+        ...state,
+        isFetching: false,
         currentItem: action.item,
-        error: action.error
-			};
+      };
     default:
       return state;
   }

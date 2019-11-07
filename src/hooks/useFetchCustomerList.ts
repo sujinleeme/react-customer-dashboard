@@ -38,8 +38,7 @@ const useFetchCustomerList = () => {
       });
     } catch(error) {
       dispatch({
-        type: 'RECEIVE_CUSTOMER_LIST',
-        items: [],
+        type: 'REQUEST_CUSTOMER_ERROR',
         error: 'error.message'
       });
       console.log(error.message);

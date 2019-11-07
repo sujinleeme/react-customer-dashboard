@@ -4,6 +4,10 @@ import { baseUrl } from '../config/const'
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
+const useCustomerClear = () => dispatch({
+  type: 'CLEAR_CUSTOMER'
+});
+
 const useFetchCustomer = id => {
   const dispatch = useDispatch<Action>();
   // const customers = useSelector((state: State) => state.customers);
@@ -26,8 +30,7 @@ const useFetchCustomer = id => {
       });
     } catch(error) {
       dispatch({
-        type: 'RECEIVE_CUSTOMER',
-        item: {},
+        type: 'REQUEST_CUSTOMER_ERROR',
         error: error.message
       });
       console.log(error.message);
