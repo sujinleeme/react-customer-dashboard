@@ -1,0 +1,1 @@
+declare: not valid in this context: package-with-no-typings-file

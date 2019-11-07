@@ -1,0 +1,35 @@
+[
+  {
+    "goalId": "91968ce6-459e-4aeb-abc6-433c32f5c88e",
+    "customerId": "0af15091-f9a4-3daf-bd4a-f457c549b4b2",
+    "createdAt": "2019-09-02T11:29:44.307+08:00[Asia/Singapore]",
+    "name": "Goal Code Name [AK0Y]",
+    "targetStockRatio": 0.2,
+    "status": "ACTIVE",
+    "plans": [
+      {
+        "customerId": "0af15091-f9a4-3daf-bd4a-f457c549b4b2",
+        "goalId": "91968ce6-459e-4aeb-abc6-433c32f5c88e",
+        "planId": "ea7d5e2c-ba98-332e-91df-f0438fd1eb9a",
+        "createdAt": "2019-09-02T11:32:23.613+08:00[Asia/Singapore]",
+        "planCcy": "SGD",
+        "initialInvestmentAmount": 555,
+        "modelPortfolioName": "20% Stocks | 80% Bonds"
+      },
+      {
+        "customerId": "0af15091-f9a4-3daf-bd4a-f457c549b4b2",
+        "goalId": "91968ce6-459e-4aeb-abc6-433c32f5c88e",
+        "planId": "42191712-8d94-32be-be5e-4180513e971b",
+        "createdAt": "2019-09-02T11:29:44.499+08:00[Asia/Singapore]",
+        "planCcy": "SGD",
+        "initialInvestmentAmount": 0,
+        "recurringInvestmentSchedule": {
+          "interval": "MONTHLY",
+          "startingFrom": "2019-09-15",
+          "amount": 500
+        },
+        "modelPortfolioName": "20% Stocks | 80% Bonds"
+      }
+    ]
+  }
+]

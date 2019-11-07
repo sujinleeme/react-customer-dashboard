@@ -1,0 +1,26 @@
+[
+  {
+    "goalId": "615e28c8-9b68-4258-89ef-180bcce328f3",
+    "customerId": "1d594e39-e994-362b-afd0-84d7fffd6aa1",
+    "createdAt": "2019-09-27T11:06:36.552+08:00[Asia/Singapore]",
+    "name": "Goal Code Name [ZPR2]",
+    "targetStockRatio": 0.6,
+    "status": "ACTIVE",
+    "plans": [
+      {
+        "customerId": "1d594e39-e994-362b-afd0-84d7fffd6aa1",
+        "goalId": "615e28c8-9b68-4258-89ef-180bcce328f3",
+        "planId": "a9ba7c48-78c7-3527-ac7b-0426c3fbe06a",
+        "createdAt": "2019-09-27T11:06:37.786+08:00[Asia/Singapore]",
+        "planCcy": "SGD",
+        "initialInvestmentAmount": 0,
+        "recurringInvestmentSchedule": {
+          "interval": "MONTHLY",
+          "startingFrom": "2019-10-15",
+          "amount": 500
+        },
+        "modelPortfolioName": "60% Stocks | 40% Bonds"
+      }
+    ]
+  }
+]

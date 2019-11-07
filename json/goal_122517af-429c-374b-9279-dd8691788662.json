@@ -1,0 +1,25 @@
+[
+  {
+    "goalId": "2f39e4ce-0ac8-411e-af72-caa1c7d1a598",
+    "customerId": "122517af-429c-374b-9279-dd8691788662",
+    "createdAt": "2019-09-11T10:37:40.76+08:00[Asia/Singapore]",
+    "name": "Goal Code Name [IJTG]",
+    "targetStockRatio": 0,
+    "status": "ACTIVE",
+    "plans": [
+      {
+        "customerId": "122517af-429c-374b-9279-dd8691788662",
+        "goalId": "2f39e4ce-0ac8-411e-af72-caa1c7d1a598",
+        "planId": "ba090941-7e4f-3cfe-bd8b-55eed5f409dc",
+        "createdAt": "2019-09-11T10:37:40.957+08:00[Asia/Singapore]",
+        "planCcy": "SGD",
+        "initialInvestmentAmount": 0,
+        "recurringInvestmentSchedule": {
+          "interval": "MONTHLY",
+          "startingFrom": "2019-09-15",
+          "amount": 500
+        }
+      }
+    ]
+  }
+]
