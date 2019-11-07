@@ -1,0 +1,26 @@
+[
+  {
+    "goalId": "d96fc565-c092-4c0c-b9da-e8d7826ca400",
+    "customerId": "1e4ddf59-cc9b-353e-be8e-6602b67f76dd",
+    "createdAt": "2019-09-24T10:43:32.246+08:00[Asia/Singapore]",
+    "name": "Goal Code Name [WB4Y]",
+    "targetStockRatio": 1,
+    "status": "ACTIVE",
+    "plans": [
+      {
+        "customerId": "1e4ddf59-cc9b-353e-be8e-6602b67f76dd",
+        "goalId": "d96fc565-c092-4c0c-b9da-e8d7826ca400",
+        "planId": "74c64277-d6cc-3aba-866b-5bc049bdf985",
+        "createdAt": "2019-09-24T10:43:33.642+08:00[Asia/Singapore]",
+        "planCcy": "SGD",
+        "initialInvestmentAmount": 0,
+        "recurringInvestmentSchedule": {
+          "interval": "MONTHLY",
+          "startingFrom": "2019-10-15",
+          "amount": 500
+        },
+        "modelPortfolioName": "100% Stocks | 0% Bonds"
+      }
+    ]
+  }
+]
